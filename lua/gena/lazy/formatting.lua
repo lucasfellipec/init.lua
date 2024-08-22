@@ -8,6 +8,7 @@ return {
 			formatters_by_ft = {
 				go = { "golines", "goimports" },
 				lua = { "stylua" },
+				python = { "ruff" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

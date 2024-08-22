@@ -1,5 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
+
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -31,11 +32,6 @@ return {
 				"rust_analyzer",
 				"gopls",
 				"tsserver",
-				"html",
-				"cssls",
-				"prismals",
-				"tailwindcss",
-				"pyright",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -60,6 +56,36 @@ return {
 								staticcheck = true,
 								gofumpt = true,
 							},
+						},
+					})
+				end,
+				yamlls = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.yamlls.setup({
+						capabilities = capabilities,
+						settings = {
+							yaml = {
+								schemas = {
+									kubernetes = "*.k8s.yaml",
+									["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+									["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
+									["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+								},
+							},
+						},
+					})
+				end,
+				tsserver = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.tsserver.setup({
+						capabilities = capabilities,
+						on_attach = function(client, _)
+							client.server.capabilities.document_formatting = false
+							client.server.capabilities.document_range_formatting = false
+						end,
+						settings = {
+							formatOnSave = false,
+							formatEnable = false,
 						},
 					})
 				end,

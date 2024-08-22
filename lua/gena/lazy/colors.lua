@@ -24,7 +24,6 @@ return {
 					sidebars = "dark", -- style for sidebars, see below
 					floats = "dark", -- style for floating windows
 				},
-				ColorMyPencils(),
 			})
 		end,
 	},
@@ -33,11 +32,12 @@ return {
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
+				disable_background = true,
 				styles = {
-					disable_background = true,
 					italic = false,
 				},
 			})
+			ColorMyPencils()
 		end,
 	},
 }
