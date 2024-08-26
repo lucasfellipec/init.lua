@@ -7,33 +7,21 @@ end
 
 return {
   {
-    "ellisonleao/gruvbox.nvim",
-    name = "gruvbox",
+    "datsfilipe/min-theme.nvim",
     config = function()
-      require("gruvbox").setup({
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = true,
-        underline = false,
-        bold = true,
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          operators = false,
-          folds = false,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "",  -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = false,
-      })
+      require("min-theme").setup({
+      -- (note: if your configuration sets vim.o.background the following option will do nothing!)
+      theme = "dark", -- String: 'dark' or 'light', determines the colorscheme used
+      transparent = false, -- Boolean: Sets the background to transparent
+      italics = {
+        comments = false, -- Boolean: Italicizes comments
+        keywords = false, -- Boolean: Italicizes keywords
+        functions = false, -- Boolean: Italicizes functions
+        strings = false, -- Boolean: Italicizes strings
+        variables = false, -- Boolean: Italicizes variables
+      },
+      overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+    })
     end,
   },
   {
@@ -55,19 +43,7 @@ return {
           floats = "transparent",   -- style for floating windows
         },
       })
-      ColorMyPencils("tokyonight-moon")
-    end,
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    config = function()
-      require("rose-pine").setup({
-        disable_background = true,
-        styles = {
-          italic = false,
-        },
-      })
+      ColorMyPencils("min-theme")
     end,
   },
 }

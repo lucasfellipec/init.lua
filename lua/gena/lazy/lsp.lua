@@ -28,6 +28,12 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
+        "tsserver",
+        "eslint",
+        "yamlls",
+        "clangd",
+        "jsonls",
+        "gopls",
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -118,7 +124,6 @@ return {
     })
 
     vim.diagnostic.config({
-      -- update_in_insert = true,
       float = {
         focusable = false,
         style = "minimal",
