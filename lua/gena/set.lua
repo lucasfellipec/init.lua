@@ -22,4 +22,5 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.updatetime = 50
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+
+vim.opt.colorcolumn = "80,120"
