@@ -11,7 +11,8 @@ return {
             ignore_filetypes = {
                 go = true,
                 python = true,
-                cpp = true
+                cpp = true,
+                yaml = true,
             },
         })
     end
