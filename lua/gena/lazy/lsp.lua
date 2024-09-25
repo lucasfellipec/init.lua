@@ -28,6 +28,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
+                "gopls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -35,7 +36,20 @@ return {
                         capabilities = capabilities,
                     })
                 end,
-                yamlls = function()
+                ["helm_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.helm_ls.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            ["helm-ls"] = {
+                                yamlls = {
+                                    path = "yaml-language-server",
+                                }
+                            }
+                        }
+                    })
+                end,
+                ["yamlls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.yamlls.setup({
                         capabilities = capabilities,
@@ -52,40 +66,13 @@ return {
                         },
                     })
                 end,
-                ["jsonls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.jsonls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            json = {
-                                schemas = {
-                                    {
-                                        description = "TypeScript compiler configuration file",
-                                        fileMatch = { "tsconfig.json", "tsconfig.*.json" },
-                                        url = "http://json.schemastore.org/tsconfig",
-                                    },
-                                    {
-                                        description = "ESLint config",
-                                        fileMatch = { ".eslintrc.json", ".eslintrc" },
-                                        url = "http://json.schemastore.org/eslintrc",
-                                    },
-                                    {
-                                        description = "Prettier config",
-                                        fileMatch = { ".prettierrc", ".prettierrc.json", "prettier.config.json" },
-                                        url = "http://json.schemastore.org/prettierrc",
-                                    },
-                                },
-                            },
-                        },
-                    })
-                end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup({
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-                                runtime = { version = "Lua 5.1" },
+                                runtime = { version = "Lua 5.4" },
                                 diagnostics = {
                                     globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
                                 },
