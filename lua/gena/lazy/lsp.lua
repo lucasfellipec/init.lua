@@ -28,7 +28,9 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "gopls"
+                "gopls",
+                "yamlls",
+                "helm_ls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -56,7 +58,7 @@ return {
                         settings = {
                             yaml = {
                                 schemas = {
-                                    kubernetes = "*.k8s.yaml",
+                                    kubernetes = "*.yaml",
                                     ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
                                     ["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] =
                                     "docker-compose.{yml,yaml}",
