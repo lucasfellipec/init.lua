@@ -45,7 +45,3 @@ vim.keymap.set(
     "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
 )
 
-vim.keymap.set("n", "<leader>c", function()
-    local char = vim.fn.input("")
-    vim.cmd("g/" .. char .. "\\|^$/d")
-end)
