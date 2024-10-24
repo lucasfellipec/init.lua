@@ -36,13 +36,13 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#303030' })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#303030" })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('highlight_yank', {}),
-    desc = 'Hightlight selection on yank',
-    pattern = '*',
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("highlight_yank", {}),
+    desc = "Hightlight selection on yank",
+    pattern = "*",
     callback = function()
-        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 25 }
+        vim.highlight.on_yank { higroup = "IncSearch", timeout = 25 }
     end,
 })
