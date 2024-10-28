@@ -46,3 +46,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank { higroup = "IncSearch", timeout = 25 }
     end,
 })
+
+-- Set tab stop and shiftwidth for c, cpp languages...
+vim.api.nvim_command("autocmd FileType c,cpp setlocal tabstop=2 shiftwidth=2 expandtab")
