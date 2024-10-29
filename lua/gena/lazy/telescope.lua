@@ -9,8 +9,6 @@ return {
             defaults = { file_ignore_patterns = { "node_modules" } },
         })
 
-        require("telescope").load_extension("find_template")
-
         local builtin = require("telescope.builtin")
         vim.keymap.set("n", "<C-p>", builtin.find_files, {})
         vim.keymap.set("n", "<leader>gt", builtin.git_files, {})
@@ -26,9 +24,5 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-        -- find templates...
-        vim.keymap.set("n", "<leader>tp", function()
-            require("telescope").extensions.find_template.find_template()
-        end)
     end,
 }
