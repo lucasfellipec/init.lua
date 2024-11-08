@@ -47,5 +47,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- Set tab stop and shiftwidth for c, cpp languages...
-vim.api.nvim_command("autocmd FileType c,cpp setlocal tabstop=2 shiftwidth=2 expandtab")
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "helm",
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.expandtab = true
+    end
+})

@@ -33,22 +33,9 @@ return {
                 "helm_ls",
             },
             handlers = {
-                function(server_name) -- default handler (optional)
+                function(server_name)
                     require("lspconfig")[server_name].setup({
                         capabilities = capabilities,
-                    })
-                end,
-                ["helm_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.helm_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            ["helm-ls"] = {
-                                yamlls = {
-                                    path = "yaml-language-server",
-                                }
-                            }
-                        }
                     })
                 end,
                 ["yamlls"] = function()
@@ -58,7 +45,7 @@ return {
                         settings = {
                             yaml = {
                                 schemas = {
-                                    kubernetes = "*.k.yaml",
+                                    kubernetes = "*.yaml",
                                     ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
                                     ["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
                                     ["http://json.schemastore.org/github-action"] = ".github/*.{yml,yaml}",

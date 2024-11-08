@@ -11,7 +11,7 @@ return {
         "datsfilipe/vesper.nvim",
         config = function()
             require("vesper").setup({
-                transparent = true,
+                -- transparent = true,
                 italics = {
                     comments = false,
                     keywords = false,
@@ -30,9 +30,10 @@ return {
         name = "rose-pine",
         config = function()
             require("rose-pine").setup({
+                disable_background = true,
                 styles = {
                     italic = false,
-                    transparency = true,
+                    -- transparency = true,
                 }
             })
         end
