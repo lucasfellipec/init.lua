@@ -38,10 +38,3 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
-
