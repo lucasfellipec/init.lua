@@ -20,8 +20,8 @@ return {
         vim.keymap.set("n", "<leader><C-s>", function() harpoon:list():replace_at(4) end)
 
         -- Toggle previous & next buffers stored within Harpoon list
-        vim.keymap.set("n", "<M-p>", function() harpoon:list():prev() end)
-        vim.keymap.set("n", "<M-n>", function() harpoon:list():next() end)
+        vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+        vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 
         -- Alternative for Linux...
         -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
