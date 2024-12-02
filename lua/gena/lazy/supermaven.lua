@@ -14,7 +14,6 @@ return {
                 cpp = true,
                 c = true,
                 lua = true,
-                yaml = true,
             },
         })
     end

@@ -28,9 +28,8 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "gopls",
-                "yamlls",
                 "helm_ls",
+                "lua_ls",
             },
             handlers = {
                 function(server_name)
