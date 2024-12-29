@@ -42,9 +42,7 @@ autocmd("LspAttach", {
     end,
 })
 
-
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "#303030" })
-
 
 vim.g.netrw_list_hide = ".*\\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,\\^\\.\\.\\=/\\=$"
 vim.g.netrw_browse_split = 0
