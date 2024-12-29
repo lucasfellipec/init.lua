@@ -1,5 +1,6 @@
 function ColorMyPencils(color)
-    color = color or "rose-pine-moon"
+    -- color = color or "rose-pine-moon"
+    color = color or "gruber-darker"
     vim.cmd.colorscheme(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -8,22 +9,17 @@ end
 
 return {
     {
-        "datsfilipe/vesper.nvim",
-        config = function()
-            require("vesper").setup({
-                -- transparent = true,
-                italics = {
-                    comments = false,
-                    keywords = false,
-                    functions = false,
-                    strings = false,
-                    variables = false,
-                },
-                overrides = {},
-                palette_overrides = {}
-            })
-            ColorMyPencils()
-        end
+        "blazkowolf/gruber-darker.nvim",
+        opts = {
+            italic = {
+                strings = false,
+                comments = false,
+                operators = false,
+                folds = false,
+            },
+            undercurl = false,
+            underline = false,
+        },
     },
     {
         "rose-pine/neovim",
