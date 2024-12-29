@@ -32,6 +32,7 @@ return {
                     -- transparency = true,
                 }
             })
+            ColorMyPencils()
         end
     },
 }
