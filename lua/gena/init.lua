@@ -1,7 +1,6 @@
 require("gena.set")
 require("gena.remap")
 require("gena.lazy_init")
-require("gena.c3c")
 
 local augroup = vim.api.nvim_create_augroup
 local GenaGroup = augroup("gena", {})
