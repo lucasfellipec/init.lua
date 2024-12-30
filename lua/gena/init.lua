@@ -8,6 +8,10 @@ local GenaGroup = augroup("gena", {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
+function R(name)
+    require("plenary.reload").reload_module(name)
+end
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -41,8 +45,6 @@ autocmd("LspAttach", {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end,
 })
-
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#303030" })
 
 vim.g.netrw_list_hide = ".*\\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,\\^\\.\\.\\=/\\=$"
 vim.g.netrw_browse_split = 0
