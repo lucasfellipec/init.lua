@@ -5,8 +5,7 @@ local local_plugins = {
     {
         "gruber-darker",
         dir = "~/personal/gruber-darker.nvim",
-        config = function()
-        end
+        config = function() end
     },
 }
 
