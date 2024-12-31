@@ -29,17 +29,6 @@ autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
-autocmd("BufEnter", {
-    group = GenaGroup,
-    callback = function()
-        if vim.bo.filetype == "c" then
-            vim.cmd.colorscheme("gruber-darker")
-        else
-            vim.cmd.colorscheme("rose-pine-moon")
-        end
-    end
-})
-
 autocmd("LspAttach", {
     group = GenaGroup,
     callback = function(e)
