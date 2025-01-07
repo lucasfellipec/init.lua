@@ -34,8 +34,8 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
                 "gopls",
+                "zls",
             },
             handlers = {
                 function(server_name)
@@ -43,21 +43,20 @@ return {
                         capabilities = capabilities,
                     })
                 end,
-                ["yamlls"] = function()
+                zls = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.yamlls.setup({
-                        capabilities = capabilities,
+                    lspconfig.zls.setup({
+                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
                         settings = {
-                            yaml = {
-                                schemas = {
-                                    kubernetes = "*.yaml",
-                                    ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-                                    ["https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json"] = "docker-compose.{yml,yaml}",
-                                    ["http://json.schemastore.org/github-action"] = ".github/*.{yml,yaml}",
-                                },
+                            zls = {
+                                enable_snippets = true,
+                                warn_style = true,
                             },
                         },
                     })
+                    vim.g.zig_fmt_parse_errors = 0
+                    vim.g.zig_fmt_autosave = 0
+
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
