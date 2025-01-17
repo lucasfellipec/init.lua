@@ -37,6 +37,7 @@ return {
                 "gopls",
                 "zls",
                 "elixirls",
+                "bashls",
             },
             handlers = {
                 function(server_name)
