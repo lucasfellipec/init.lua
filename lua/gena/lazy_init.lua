@@ -13,6 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    spec = "gena.lazy",
+    spec = "rabbithole.lazy",
     change_detection = { notify = false }
 })

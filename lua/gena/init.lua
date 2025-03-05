@@ -1,9 +1,9 @@
-require("gena.set")
-require("gena.remap")
-require("gena.lazy_init")
+require("rabbithole.set")
+require("rabbithole.remap")
+require("rabbithole.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
-local GenaGroup = augroup("gena", {})
+local RabbitHoleGroup = augroup("rabbithole", {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
@@ -24,7 +24,7 @@ autocmd("TextYankPost", {
 })
 
 autocmd('BufEnter', {
-    group = GenaGroup,
+    group = RabbitHoleGroup,
     callback = function()
         if vim.bo.filetype == "zig" then
             vim.cmd.colorscheme("tokyonight-night")
@@ -35,13 +35,13 @@ autocmd('BufEnter', {
 })
 
 autocmd({ "BufWritePre" }, {
-    group = GenaGroup,
+    group = RabbitHoleGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd("LspAttach", {
-    group = GenaGroup,
+    group = RabbitHoleGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
