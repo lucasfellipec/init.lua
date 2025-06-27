@@ -35,8 +35,6 @@ return {
                 "lua_ls",
                 "gopls",
                 "zls",
-                "bashls",
-                "clangd",
             },
             handlers = {
                 function(server_name)
