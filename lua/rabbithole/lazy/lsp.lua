@@ -34,7 +34,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "gopls",
-                "zls",
+                "clangd",
             },
             handlers = {
                 function(server_name)
