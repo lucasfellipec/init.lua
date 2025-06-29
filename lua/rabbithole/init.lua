@@ -23,17 +23,6 @@ autocmd("TextYankPost", {
     end,
 })
 
-autocmd('BufEnter', {
-    group = RabbitHoleGroup,
-    callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("gruber-darker")
-        end
-    end
-})
-
 autocmd({ "BufWritePre" }, {
     group = RabbitHoleGroup,
     pattern = "*",
@@ -61,3 +50,9 @@ vim.g.netrw_list_hide = ".*\\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,\\^\
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+vim.opt.list = true
+vim.opt.listchars:append("trail:·")
+
+vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
+vim.cmd([[match ExtraWhitespace /\s\+$/]])
