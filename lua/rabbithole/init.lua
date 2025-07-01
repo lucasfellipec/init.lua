@@ -50,9 +50,6 @@ vim.g.netrw_list_hide = ".*\\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,\\^\
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
-
-vim.opt.list = true
-vim.opt.listchars:append("trail:·")
-
-vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
-vim.cmd([[match ExtraWhitespace /\s\+$/]])
+vim.g.netrw_liststyle = 1
+vim.g.netrw_sort_options = "i"
+vim.g.netrw_sort_by = "exten"
