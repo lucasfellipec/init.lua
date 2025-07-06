@@ -8,6 +8,9 @@ return {
         config = function()
             ---@type CompileModeOpts
             vim.g.compile_mode = {}
+
+            vim.keymap.set("n", "<leader>cc", ":silent :below :Compile<CR>", {})
+            vim.keymap.set("n", "<leader>cr", ":silent :below :Recompile<CR>", {})
         end
     }
 }
