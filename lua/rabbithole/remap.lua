@@ -30,8 +30,8 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<C-t>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-s>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -44,6 +44,3 @@ end)
 
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
-
-vim.keymap.set("n", "<leader>rr", ":RunCode<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>rf", ":RunFile<CR>", { noremap = true, silent = false })
