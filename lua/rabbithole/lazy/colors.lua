@@ -8,17 +8,6 @@ end
 
 return {
     {
-        "blazkowolf/gruber-darker.nvim",
-        opts = {
-            italic = {
-                strings = false,
-                comments = false,
-                operators = false,
-                visual = false,
-            },
-        },
-    },
-    {
         "rose-pine/neovim",
         name = "rose-pine",
         config = function()
