@@ -46,6 +46,50 @@ autocmd("LspAttach", {
     end,
 })
 
+local last_build_cmd = nil
+
+local function wrap_compile_cmd(cmd)
+    local dir = vim.fn.getcwd()
+    local safe_cmd = cmd:gsub('"', '\\"')
+    return string.format([[
+sh -c "
+echo '-*- mode: compilation; default-directory: \"%s\" -*-'
+start=$(date +%%s)
+echo 'Compilation started at $(date)'
+echo
+echo '%s'
+%s
+echo
+end=$(date +%%s)
+echo 'Compilation finished at $(date)'
+read -p ''
+"
+]], dir, safe_cmd, safe_cmd)
+end
+
+function Compile(cmd)
+    last_build_cmd = cmd
+    os.execute("tmux split-window -v " .. vim.fn.shellescape(wrap_compile_cmd(cmd)))
+end
+
+function Recompile()
+    if last_build_cmd then
+        os.execute("tmux split-window -v " .. vim.fn.shellescape(wrap_compile_cmd(last_build_cmd)))
+    else
+        print("No previous compilation command")
+    end
+end
+
+vim.keymap.set("n", "<leader>c", function()
+    vim.ui.input({ prompt = "Compile command: " }, function(input)
+        if input ~= nil and input ~= "" then
+            Compile(input)
+        end
+    end)
+end)
+
+vim.keymap.set("n", "<leader>r", Recompile)
+
 vim.g.netrw_list_hide = ".*\\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,\\^\\.\\.\\=/\\=$"
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
