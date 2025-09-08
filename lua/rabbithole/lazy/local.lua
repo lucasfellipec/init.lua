@@ -3,6 +3,12 @@ local local_plugins = {
         "ThePrimeagen/vim-be-good",
     },
     {
+        "gruber-darker",
+        dir = "~/personal/gruber-darker",
+        config = function()
+        end
+    },
+    {
         "harpoon",
         dir = "~/personal/harpoon",
         config = function()
